@@ -4,7 +4,7 @@
 
 
 #### Развёрнутый проект можно посмотреть тут:
-- [GitHub Pages](https://rommcl.github.io/Test_MakvesGroup_AnimatedSidebar/)
+- [GitHub Pages](https://rommcl.github.io/Test_MakvesGroup_Sidebar/)
 
 
 ## Задание:
