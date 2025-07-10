@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://rommcl.github.io/Test_MakvesGroup_AnimatedSidebar",
+  "homepage": "https://rommcl.github.io/Test_MakvesGroup_Sidebar",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
