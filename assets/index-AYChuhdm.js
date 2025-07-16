@@ -726,7 +726,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         color: ${({theme:l})=>l["text-default"]};
         border: thick double ${({theme:l})=>l["sidebar-background-hover"]};
         border-radius: 1rem;
-        transition: var(--main-transition);           
+        transition: var(--main-transition); 
     `,SidebarHeader:Ce.div`
         width: 100%;
         display: flex;
@@ -769,7 +769,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         transform: translateY(${l=>l.$isOpened?"0":"-1rem"})
                    scale(${l=>l.$isOpened?"1":"3"});
         transition: all 0.3s ease;
-        transition-delay: ${({$index:l,$isOpened:c})=>c?l*.1+"s":0};       
+        transition-delay: ${({$index:l,$isOpened:c})=>c?l*.1+"s":"0s"};   
     `,SidebarItemsWrapper:Ce.div`
         width: 100%;
         display: flex;
@@ -791,10 +791,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         position: relative;
         background-color: ${({theme:l,$isActive:c})=>c?l["sidebar-background-active"]:"transparent"};
         color: ${({theme:l,$isActive:c})=>c?l["text-active"]:l["text-default"]};
+        transition: var(--main-transition);
        
         &:hover {
             background: ${({theme:l})=>l["button-background-active"]};
             color: ${({theme:l})=>l["text-hover"]};
+        //    transition: var(--main-transition);
         }
 
         &:hover ${Do} {
@@ -804,18 +806,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }
 
         > svg {
-            margin-right: ${l=>l.$isOpened?"0.75rem":"0"};
-            transition: var(--main-transition);
+        //    margin-right: ${l=>l.$isOpened?"0.75rem":"0"};
+        //    transition: var(--main-transition);
         }
 
         > span {
             opacity: ${l=>l.$isOpened?"1":"0"};
-            width: ${l=>l.$isOpened?"fit-content":"0"};           
             position: absolute;
             top: 0;
             left: ${l=>l.$isOpened?"2.5rem":"4rem"};
-            transition: var(--main-transition);
-            transition-delay: ${({$index:l,$isOpened:c})=>c?l*.2+"s":0};
+            transition: all 0.5s ease ${({$index:l,$isOpened:c})=>c?l*.2+"s":"0s"};
+            transition-property: left, opacity;
         }       
     `},{SidebarContainer:S3,SidebarHeader:A3,LogoTitleLetter:E3,SidebarItemsWrapper:Gh,SidebarItem:Xh}=b3,T3="TensorFlow",O3=[{title:"Home",icon:"fas-solid fa-house",path:"/"},{title:"Sales",icon:"chart-line",path:"/sales"},{title:"Costs",icon:"chart-column",path:"/costs"},{title:"Payments",icon:"wallet",path:"/payments"},{title:"Finances",icon:"chart-pie",path:"/finances"},{title:"Messages",icon:"envelope",path:"/messages"}],x3=[{title:"Settings",icon:"sliders",path:"/settings"},{title:"Support",icon:"phone-volume",path:"/support"}],_3=l=>{const{color:c,toggleTheme:r}=l,[f,s]=Za.useState(!0),[h,y]=Za.useState(null),T=()=>{s(!f)},A=g=>{console.log(`жмакнули на "${g}"`),y(g)};return Ot.jsxs(S3,{$isOpened:f,children:[Ot.jsxs(A3,{$isOpened:f,children:[Ot.jsx("img",{src:p3,alt:"TensorFlow logo"}),[...T3].map((g,O)=>Ot.jsx(E3,{$index:O+1,$isOpened:f,children:g},O)),Ot.jsx("div",{onClick:T,children:Ot.jsx(Tu,{icon:f?"angle-left":"angle-right"})})]}),Ot.jsx(Gh,{$position:"start",children:O3.map((g,O)=>Ot.jsxs(Xh,{$isOpened:f,$isActive:h===g.path,$index:O+1,onClick:()=>{A(g.path)},children:[Ot.jsx(Tu,{icon:g.icon}),Ot.jsx("span",{children:g.title}),!f&&Ot.jsx(Do,{children:g.title})]},g.title))}),Ot.jsx(Gh,{$position:"end",children:x3.map((g,O)=>Ot.jsxs(Xh,{$isOpened:f,$isActive:h===g.path,$index:O+4,onClick:()=>{A(g.path)},children:[Ot.jsx(Tu,{icon:g.icon}),Ot.jsx("span",{children:g.title}),!f&&Ot.jsx(Do,{children:g.title})]},g.title))}),Ot.jsx(v3,{theme:c,active:r,isOpened:f})]})},z3={Main:Ce.main`
         width: 100%;
