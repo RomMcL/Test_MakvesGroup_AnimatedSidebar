@@ -8,7 +8,10 @@ import logo from '../../assets/logo.png';
 import { cssSidebar, Tooltip } from '../../styles/sidebar.css';
 
 
-const { SidebarContainer, SidebarHeader, SidebarItemsWrapper, SidebarItem } = cssSidebar;
+const { SidebarContainer, SidebarHeader, LogoTitleLetter, 
+        SidebarItemsWrapper, SidebarItem } = cssSidebar;
+
+const logoTitle = 'TensorFlow';
 
 const routes = [
     { title: 'Home', icon: 'fas-solid fa-house', path: '/' },
@@ -44,7 +47,17 @@ const Sidebar = (props) => {
 
             <SidebarHeader $isOpened={isOpened}>
                 <img src={ logo } alt="TensorFlow logo"/>
-                <span>TensorFlow</span>
+                {
+                    [...logoTitle].map((letter, index) => (
+                        <LogoTitleLetter
+                            key={index}
+                            $index={index+1}
+                            $isOpened={isOpened}
+                        >
+                            {letter}
+                        </LogoTitleLetter>                      
+                    ))
+                }
                 <div onClick={ toggleSidebar }>
                     <FontAwesomeIcon icon={ isOpened ? 'angle-left' : 'angle-right' }/>
                 </div>
@@ -52,37 +65,38 @@ const Sidebar = (props) => {
 
             <SidebarItemsWrapper $position='start'>
                 {
-                    routes.map(route => (
+                    routes.map((route, index) => (
                         <SidebarItem 
                             $isOpened={isOpened}
                             $isActive={activeItem === route.path}
-                            key={ route.title }
+                            $index={index+1}
+                            key={route.title}
                             onClick={() => {
                                 goToRoute(route.path);
                             }}
                         >
                             <FontAwesomeIcon icon={ route.icon }/>
-                            <span>{ route.title }</span>
+                            <span>{route.title}</span>
                             {!isOpened && <Tooltip>{route.title}</Tooltip>}
                         </SidebarItem>                      
                     ))
-                }
-                
+                }                
             </SidebarItemsWrapper>
 
             <SidebarItemsWrapper $position='end'>
                 {
-                    bottomRoutes.map(route => (
+                    bottomRoutes.map((route, index) => (
                         <SidebarItem 
                             $isOpened={isOpened}
                             $isActive={activeItem === route.path}
-                            key={ route.title }
+                            $index={index+4}
+                            key={route.title}
                             onClick={() => {
                                 goToRoute(route.path);
                             }}
                         >
-                            <FontAwesomeIcon icon={ route.icon }/>
-                            <span>{ route.title }</span>
+                            <FontAwesomeIcon icon={route.icon}/>
+                            <span>{route.title}</span>
                             {!isOpened && <Tooltip>{route.title}</Tooltip>}
                         </SidebarItem>
                     ))

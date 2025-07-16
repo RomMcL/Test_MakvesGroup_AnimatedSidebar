@@ -46,20 +46,12 @@ export const cssSidebar = {
         align-items: center;
         height: 1.5rem;
         position: relative;
+        margin-right: ${props => props.$isOpened ? '1.75rem' : '0'};
+        transition: var(--main-transition);
            
         > img {
             max-height: 100%;
             margin-inline: 0.3rem;
-        }
-
-        > span {
-            color: ${({ theme }) => theme['text-logo-default']};
-            font-weight: 600;
-            opacity: ${props => props.$isOpened ? '1' : '0'};
-            width: ${props => props.$isOpened ? 'fit-content' : '0'};
-            padding-right: ${props => props.$isOpened ? '1.75rem' : '0'};
-            transition: var(--main-transition);
-            overflow: hidden;
         }
 
         > div {
@@ -77,6 +69,20 @@ export const cssSidebar = {
             top: 0;
             left: ${props => props.$isOpened ? 'calc(100% + 0.25rem)' : 'calc(100% + 1.5rem)'};         
         }
+    `,
+
+    LogoTitleLetter: styled.span`        
+        color: ${({ theme }) => theme['text-logo-default']};
+        font-weight: 600;
+        width: ${props => props.$isOpened ? 'fit-content' : '0'};
+        overflow: hidden;
+
+        opacity: ${props => props.$isOpened ? '1' : '0'};
+        letter-spacing: ${props => props.$isOpened ? 'normal' : '-0.4rem'};
+        transform: translateY(${props => props.$isOpened ? '0' : '-1rem'})
+                   scale(${props => props.$isOpened ? '1' : '3'});
+        transition: all 0.3s ease;
+        transition-delay: ${({$index, $isOpened}) => $isOpened ? ($index)*0.1 + 's' : 0};       
     `,
 
     SidebarItemsWrapper: styled.div`
@@ -98,6 +104,7 @@ export const cssSidebar = {
         padding: 0.3rem 0.5rem;
         border-radius: 0.7rem;
         cursor: pointer;
+        overflow: hidden;
         position: relative;
         background-color: ${({ theme, $isActive }) => 
             $isActive ? theme['sidebar-background-active'] : 'transparent'};
@@ -121,11 +128,13 @@ export const cssSidebar = {
         }
 
         > span {
-            padding-right: ${props => props.$isOpened ? '1.75rem' : '0'};
             opacity: ${props => props.$isOpened ? '1' : '0'};
             width: ${props => props.$isOpened ? 'fit-content' : '0'};           
+            position: absolute;
+            top: 0;
+            left: ${props => props.$isOpened ? '2.5rem' : '4rem'};
             transition: var(--main-transition);
-            overflow: hidden;
+            transition-delay: ${({$index, $isOpened}) => $isOpened ? ($index)*0.2 + 's' : 0};
         }       
     `,
 
