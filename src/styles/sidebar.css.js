@@ -35,7 +35,7 @@ export const cssSidebar = {
         color: ${({ theme }) => theme['text-default']};
         border: thick double ${({ theme }) => theme['sidebar-background-hover']};
         border-radius: 1rem;
-        transition: var(--main-transition);           
+        transition: var(--main-transition); 
     `,
 
     SidebarHeader: styled.div`
@@ -82,7 +82,7 @@ export const cssSidebar = {
         transform: translateY(${props => props.$isOpened ? '0' : '-1rem'})
                    scale(${props => props.$isOpened ? '1' : '3'});
         transition: all 0.3s ease;
-        transition-delay: ${({$index, $isOpened}) => $isOpened ? ($index)*0.1 + 's' : 0};       
+        transition-delay: ${({$index, $isOpened}) => $isOpened ? ($index)*0.1 + 's' : '0s'};   
     `,
 
     SidebarItemsWrapper: styled.div`
@@ -110,6 +110,7 @@ export const cssSidebar = {
             $isActive ? theme['sidebar-background-active'] : 'transparent'};
         color: ${({ theme, $isActive }) => 
             $isActive ? theme['text-active'] : theme['text-default']};
+        transition: var(--main-transition);
        
         &:hover {
             background: ${({ theme }) => theme['button-background-active']};
@@ -122,19 +123,13 @@ export const cssSidebar = {
             ${props => !props.$isOpened && 'display: block'};
         }
 
-        > svg {
-            margin-right: ${props => props.$isOpened ? '0.75rem' : '0'};
-            transition: var(--main-transition);
-        }
-
         > span {
             opacity: ${props => props.$isOpened ? '1' : '0'};
-            width: ${props => props.$isOpened ? 'fit-content' : '0'};           
             position: absolute;
             top: 0;
             left: ${props => props.$isOpened ? '2.5rem' : '4rem'};
-            transition: var(--main-transition);
-            transition-delay: ${({$index, $isOpened}) => $isOpened ? ($index)*0.2 + 's' : 0};
+            transition: all 0.5s ease ${({$index, $isOpened}) => $isOpened ? ($index)*0.2 + 's' : '0s'};
+            transition-property: left, opacity;
         }       
     `,
 
